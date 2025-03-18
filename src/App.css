@@ -1,0 +1,15 @@
+#root {
+    width: 250px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-container-end {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
