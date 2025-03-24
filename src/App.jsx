@@ -54,7 +54,7 @@ const App = () => {
       }
 
   return (
-    <>
+    <main>
       <AddItem onAddItem={handleAddSale} />
 
       <hr/>
@@ -73,7 +73,7 @@ const App = () => {
       <ItemStats totalItems={totalItems}
                  totalSales={totalSales}
                  mostSoldItemName={mostSoldItem.name} />
-    </>
+    </main>
   )
 }
 
