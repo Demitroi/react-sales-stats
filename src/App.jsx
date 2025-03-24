@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Item from './Item.jsx'
 import AddItem from './AddItem.jsx'
@@ -23,15 +23,19 @@ const App = () => {
   const [totalSales, setTotalSales] = useState(initialSales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
   const [mostSoldItem, setMostSoldItem] = useState(initialSales.reduce((max, sale) => sale.sales > max.sales ? sale : max, initialSales[0]));
 
+  useEffect(() => {
+      setTotalItems(sales.length);
+      setTotalSales(sales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
+      setMostSoldItem(sales.reduce((max, sale) => sale.sales > max.sales ? sale : max, sales[0]))
+  }, [sales])
+
   const handleAddSale = (name) => {
       const newSales = [
           ...sales,
           {id: nextID++, name: name, sales: 0}
       ]
       setSales(newSales);
-      setTotalItems(newSales.length);
-      setTotalSales(newSales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
-  }
+      }
 
   const handleChangeSale = (nextSale) => {
       const newSales = sales.map(sale => {
@@ -42,18 +46,12 @@ const App = () => {
           }
       })
       setSales(newSales)
-      setTotalItems(newSales.length);
-      setTotalSales(newSales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
-      setMostSoldItem(newSales.reduce((max, sale) => sale.sales > max.sales ? sale : max, newSales[0]))
-  }
+      }
 
-  const handleDeleteSake = (saleID) => {
+  const handleDeleteSale = (saleID) => {
       const newSales = sales.filter(sale => sale.id !== saleID);
       setSales(newSales)
-      setTotalItems(newSales.length);
-      setTotalSales(newSales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
-      setMostSoldItem(newSales.reduce((max, sale) => sale.sales > max.sales ? sale : max, newSales[0]))
-  }
+      }
 
   return (
     <>
@@ -67,7 +65,7 @@ const App = () => {
                 name={name}
                 sales={sales}
                 onChageSale={handleChangeSale}
-                onDeleteSale={handleDeleteSake}/>
+                onDeleteSale={handleDeleteSale}/>
       ))}
 
       <hr/>
