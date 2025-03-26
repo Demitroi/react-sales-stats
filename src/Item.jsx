@@ -5,16 +5,16 @@ const Item = ({id, name, sales, onChageSale, onDeleteSale}) => {
     const onClickAdd = () => {
         const sale = {id: id, name: name, sales: sales + 1};
         onChageSale(sale);
-    }
+    };
 
     const onClickSub = () => {
         const sale = {id: id, name: name, sales: sales - 1};
         onChageSale(sale);
-    }
+    };
 
     const onClickDel = () => {
         onDeleteSale(id);
-    }
+    };
 
     return (
         <>
@@ -28,7 +28,7 @@ const Item = ({id, name, sales, onChageSale, onDeleteSale}) => {
                 <button onClick={onClickDel}>Del</button>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Item
+export default Item;

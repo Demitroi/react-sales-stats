@@ -1,21 +1,21 @@
 const ItemStats = ({ totalItems, totalSales, mostSoldItemName }) => {
 
-    return (
-        <>
-            <div className="flex-container">
+  return (
+      <>
+          <div className="flex-container">
               <strong>Total Sales:</strong>
               <span>{totalSales}</span>
-            </div>
-            <div className="flex-container">
+          </div>
+          <div className="flex-container">
               <strong>Total Items:</strong>
               <span>{totalItems}</span>
-            </div>
-            <div className="flex-container">
+          </div>
+          <div className="flex-container">
               <strong>Most Sold Item:</strong>
               <span>{mostSoldItemName}</span>
-            </div>
-        </>
-    )
-}
+          </div>
+      </>
+  );
+};
 
-export default ItemStats
+export default ItemStats;
