@@ -12,5 +12,4 @@
 .flex-container-end {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
 }
