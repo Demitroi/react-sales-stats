@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 
 const useSales = ({ initialSales }) => {
@@ -6,9 +6,30 @@ const useSales = ({ initialSales }) => {
     const [totalItems, setTotalItems] = useState(initialSales.length);
     const [totalSales, setTotalSales] = useState(0);
     const [mostSoldItem, setMostSoldItem] = useState(0);
+    let nextID = useRef(initialSales.length);
 
-    const updateSales = (sales) => {
-        setSales(sales);
+    const addSale = (name) => {
+        const newSales = [
+            ...sales,
+            { id: nextID.current++, name: name, sales: 0 }
+        ];
+        setSales(newSales);
+    };
+
+    const updateSale = (saleUpdated) => {
+        const newSales = sales.map(sale => {
+            if (sale.id === saleUpdated.id) {
+                return saleUpdated;
+            } else {
+                return sale;
+            }
+        });
+        setSales(newSales);
+    };
+
+    const deleteSale = (saleID) => {
+        const newSales = sales.filter(sale => sale.id !== saleID);
+        setSales(newSales);
     };
 
     useEffect(() => {
@@ -17,7 +38,7 @@ const useSales = ({ initialSales }) => {
         setMostSoldItem(sales.reduce((max, sale) => sale.sales > max.sales ? sale : max, sales[0]));
     }, [sales]);
 
-    return { sales, totalItems, totalSales, mostSoldItem, updateSales };
+    return { sales, totalItems, totalSales, mostSoldItem, addSale, updateSale, deleteSale };
 };
 
 export default useSales;

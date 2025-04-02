@@ -5,34 +5,15 @@ import ItemStats from './ItemStats.jsx';
 import useSales from './hooks/useSales.jsx';
 import initialSales from './mocks/initialSales.js';
 
-let nextID = initialSales.length;
 
 const App = () => {
-    const { sales, totalItems, totalSales, mostSoldItem, updateSales } = useSales({ initialSales });
+    const { sales, totalItems, totalSales, mostSoldItem, addSale, updateSale, deleteSale } = useSales({ initialSales });
 
-    const handleAddSale = (name) => {
-        const newSales = [
-            ...sales,
-            { id: nextID++, name: name, sales: 0 }
-        ];
-        updateSales(newSales);
-    };
+    const handleAddSale = (name) => addSale(name);
 
-    const handleChangeSale = (nextSale) => {
-        const newSales = sales.map(sale => {
-            if (sale.id === nextSale.id) {
-                return nextSale;
-            } else {
-                return sale;
-            }
-        });
-        updateSales(newSales);
-    };
+    const handleChangeSale = (saleUpdated) => updateSale(saleUpdated);
 
-    const handleDeleteSale = (saleID) => {
-        const newSales = sales.filter(sale => sale.id !== saleID);
-        updateSales(newSales);
-    };
+    const handleDeleteSale = (saleID) => deleteSale(saleID);
 
     return (
         <>
