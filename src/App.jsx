@@ -20,8 +20,8 @@ let nextID = initialSales.length;
 const App = () => {
     const [sales, setSales] = useState(initialSales);
     const [totalItems, setTotalItems] = useState(initialSales.length);
-    const [totalSales, setTotalSales] = useState(initialSales.reduce((acumulator, sale) => acumulator + sale.sales, 0));
-    const [mostSoldItem, setMostSoldItem] = useState(initialSales.reduce((max, sale) => sale.sales > max.sales ? sale : max, initialSales[0]));
+    const [totalSales, setTotalSales] = useState(0);
+    const [mostSoldItem, setMostSoldItem] = useState(0);
 
     useEffect(() => {
         setTotalItems(sales.length);
