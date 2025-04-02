@@ -54,26 +54,30 @@ const App = () => {
     };
 
     return (
-        <main>
-            <AddItem onAddItem={handleAddSale} />
+        <>
+            <header>
+                <AddItem onAddItem={handleAddSale} />
+            </header>
 
             <hr />
 
-            {sales.map(({ id, name, sales }) => (
-                <Item key={id}
-                    id={id}
-                    name={name}
-                    sales={sales}
-                    onChageSale={handleChangeSale}
-                    onDeleteSale={handleDeleteSale} />
-            ))}
+            <main>
+                {sales.map(({ id, name, sales }) => (
+                    <Item key={id}
+                        id={id}
+                        name={name}
+                        sales={sales}
+                        onChageSale={handleChangeSale}
+                        onDeleteSale={handleDeleteSale} />
+                ))}
 
-            <hr />
+                <hr />
 
-            <ItemStats totalItems={totalItems}
-                totalSales={totalSales}
-                mostSoldItemName={mostSoldItem.name} />
-        </main>
+                <ItemStats totalItems={totalItems}
+                    totalSales={totalSales}
+                    mostSoldItemName={mostSoldItem.name} />
+            </main>
+        </>
     );
 };
 

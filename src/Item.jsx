@@ -18,11 +18,11 @@ const Item = ({id, name, sales, onChageSale, onDeleteSale}) => {
 
     return (
         <>
-            <div className="flex-container">
+            <div className="flex-container-between">
                 <span>{name}</span>
                 <span>{numberOfSales}</span>
             </div>
-            <div className="flex-container-end">
+            <div className="flex-container">
                 <button onClick={onClickAdd}>Add</button>
                 <button onClick={onClickSub}>Sub</button>
                 <button onClick={onClickDel}>Del</button>

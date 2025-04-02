@@ -5,20 +5,20 @@ const AddItem = ({ onAddItem }) => {
     const [name, setName] = useState('');
 
     return (
-        <div className="flex-container">
+        <div className="flex-container-between">
             <input type="text"
-                   placeholder="Add Item"
-                   value={name}
-                   onChange={e => setName(e.target.value)}
+                placeholder="Add Item"
+                value={name}
+                onChange={e => setName(e.target.value)}
             />
             <button onClick={() => {
-                    setName('');
-                    onAddItem(name);
-                }}>
+                setName('');
+                onAddItem(name);
+            }}>
                 Add
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default AddItem
+export default AddItem;
